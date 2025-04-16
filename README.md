@@ -69,3 +69,18 @@ Source of input (`https request body`, `text file`, `image` etc.) → Reader →
 
 When we spawn multiple go routines inside of our program, there is a Go Scheduler that works with one CPU core of our local machine
 ![GO SCHEDULER](images/go-routine-scheduler.png)
+- Although multiple go routines are launched, only one is being executed or running at any given time
+- The scheduler runs the next go routine once it detects that a function has made a blocking call, or when the function has finished running all the code
+- By default Go tries to use one core. It is concurrent, but doesn't perform parallelism.
+- Concurrency: Multiple threads executing code, if one thread blocks another one is picked up and worked on. Simply stating, we can schedule work and kind of change them on the fly
+- Parallelism: When multiple threads execute at the same time, requires multiple CPUs. Simply stating, we can perform multiple jobs at the same time
+
+![Main And Child Routines](images/main_and_childroutines.png)
+
+Channels are used to communicate in between different go routines. They can be thought of intermediates discussion or communication between all different running routines.
+The information that is passed into a channel or the data attempted to share between different routines must be of the same type.
+
+![Sending data with channels](images/send_data_channels.png)
+- Receiving a message via a channel is a blocking call (blocking operation, like HTTP GET)
+- Never try to share variables between go routines. 
+- Wherever possible, we only share information with a child routine, or a new Go Routine we create by passing that info as an argument
