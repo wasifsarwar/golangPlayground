@@ -3,44 +3,18 @@ package main
 import "fmt"
 
 func main() {
-	eb := englishBot{}
-	sb := spanishBot{}
-
-	printGreeting(eb)
-	printGreeting(sb)
-
 
 	triangle := triangle{
-		height: 53.31,
-		base: 87.33,
+		height: 10,
+		base: 8,
 	}
 
 	square := square{
-		sideLength: 324,
+		sideLength: 12,
 	}
 
 	printArea(triangle)
 	printArea(square)
-}
-
-type bot interface {
-	getGreeting() string
-}
-
-type englishBot struct{}
-
-type spanishBot struct{}
-
-func (eb englishBot) getGreeting() string {
-	return "Hello There"
-}
-
-func printGreeting(b bot) {
-	fmt.Println(b.getGreeting())
-}
-
-func (sb spanishBot) getGreeting() string {
-	return "Hola"
 }
 /**
 Exercise: Write a program that creates two custom struct types triangle and square
@@ -74,5 +48,5 @@ func (s square) getArea() float64 {
 }
 
 func printArea(s shape) {
-	fmt.Print(s.getArea())
+	fmt.Println(s.getArea())
 } 

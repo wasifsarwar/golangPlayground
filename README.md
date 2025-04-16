@@ -56,6 +56,16 @@ In golang, there are concrete types and interface types
     - It doesn't provide any implementation
     - It specifies behavior without dictating how that behavior is implemented
     - Allows polymorphism by allowing functions to accept any type that implements the interface
+    - *Interfaces are a contract to help us manage types*
+
+#### An example of working with http interfaces
+![HTTP Response Interface](images/http_response_interface.png)
+Inside `Response Struct`, the field `Body` can be of any type as long as it satisfies the `ReadCloser` interface.
+The `Reader` interface allows us to read data from different sources, such as network connections or files, in a consistent manner. It provides a standard way to handle input streams, enabling us to process data without needing to know the underlying source.
+Source of input (`https request body`, `text file`, `image` etc.) → Reader → `[]byte`(output data that anyone can work with)
+
+### Go Routines and Channels
 
 
-Rules of interfaces:
+When we spawn multiple go routines inside of our program, there is a Go Scheduler that works with one CPU core of our local machine
+![GO SCHEDULER](images/go-routine-scheduler.png)
